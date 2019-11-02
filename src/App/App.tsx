@@ -7,6 +7,7 @@ import Content from '../components/Content';
 import Header from '../components/Header';
 
 import CurrencyExchange from './routes/CurrencyExchange';
+import NoRoute from './routes/NoRoute/NoRoute';
 import Wallet from './routes/Wallet';
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
                         <Route exact path="/wallet">
                             <Wallet/>
                         </Route>
+                        <Route component={NoRoute} />
                     </Switch>
                 </React.Suspense>
             </Content>
@@ -33,3 +35,4 @@ const App = () => {
 };
 
 export default App;
+
