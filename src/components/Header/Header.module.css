@@ -1,0 +1,8 @@
+.host {
+    display: flex;
+    background: #24292e;
+    padding: 12px 0;
+    color: #fff;
+    min-height: 40px;
+    align-items: center;
+}

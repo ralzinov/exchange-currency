@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-export const CurrencyExchange: React.FC = function () {
-
+const CurrencyExchange = () => {
     return (
         <div>CurrencyExchange</div>
     );
 };
 
+export default CurrencyExchange;
