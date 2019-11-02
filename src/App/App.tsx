@@ -1,12 +1,18 @@
 import React from 'react';
-import './App.css';
+import {Route, Switch} from 'react-router';
+import {BrowserRouter} from 'react-router-dom';
+import CurrencyExchange from './routes/CurrencyExchange';
 
 const App: React.FC = () => {
-  return (
-    <div className="App">
-
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/">
+                    <CurrencyExchange />
+                </Route>
+            </Switch>
+        </BrowserRouter>
+    );
 };
 
 export default App;
