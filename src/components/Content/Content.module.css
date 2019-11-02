@@ -1,5 +1,8 @@
 .host {
     display: flex;
     flex: 1;
-    justify-content: center;
+    width: 100%;
+    max-width: 992px;
+    margin: 0 auto;
+    padding: 16px;
 }
