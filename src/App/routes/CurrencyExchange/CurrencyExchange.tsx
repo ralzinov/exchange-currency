@@ -1,9 +1,19 @@
 import * as React from 'react';
+import {useEffect} from 'react';
+import {connect} from 'react-redux';
+import selectors from './store/currency-exchange.selectors';
+import actions from './store/currency-rate.actions';
 
-const CurrencyExchange = () => {
+type ICurrencyExchangeProps = typeof actions & ReturnType<typeof selectors>;
+
+const CurrencyExchange = (props: ICurrencyExchangeProps) => {
+    useEffect(() => {
+        props.loadCurrenciesRates();
+    });
+
     return (
-        <div>CurrencyExchange</div>
+        <div>CurrendcyExdgde</div>
     );
 };
 
-export default CurrencyExchange;
+export default connect(selectors, actions)(CurrencyExchange);
