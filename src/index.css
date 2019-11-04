@@ -11,6 +11,7 @@ html,
 body,
 [id="root"] {
   height: 100vh;
+  min-width: 620px;
 }
 
 [id="root"] {

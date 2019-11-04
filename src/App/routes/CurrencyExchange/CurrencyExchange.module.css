@@ -1,0 +1,23 @@
+.host {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.host h1 {
+    margin: 0 0 8px 0;
+}
+
+.host h4 {
+    margin: 0 0 24px 0;
+    font-weight: 400;
+    color: #333;
+}
+
+.card {
+    display: flex;
+    border: 1px solid #c2c2c2;
+    border-radius: 4px;
+    padding: 24px 32px;
+    flex-direction: column;
+}

@@ -1,0 +1,40 @@
+.row {
+    display: flex;
+}
+
+.row:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+.cell {
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+}
+
+.cell > * {
+    margin-bottom: 8px;
+}
+
+.directionSymbol {
+    display: flex;
+    width: 24px;
+    margin: 8px;
+    align-items: center;
+}
+
+.directionSymbol:after {
+    content: '';
+    display: flex;
+    height: 16px;
+    width: 16px;
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    transform: rotate(45deg);
+}
+
+.select > span {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}

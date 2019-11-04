@@ -1,6 +1,10 @@
 import * as React from 'react';
+import {ReducerRegistry} from '../../store/ReducerRegistry';
 
-export default React.lazy(() => {
-    import('./store');
-    return import('./CurrencyExchange');
+ReducerRegistry.register({
+    exchange: require('./CurrencyExchange.reducer').currencyExchangeReducer
 });
+
+export default React.lazy(() => import('./CurrencyExchange'));
+
+

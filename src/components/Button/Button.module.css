@@ -1,0 +1,39 @@
+.host {
+    border: 0;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 1;
+    border-radius: 4px;
+    position: relative;
+    background: #2684FF;
+    cursor: pointer;
+}
+
+.host:disabled {
+    background: #b1b1b1;
+    cursor: not-allowed;
+}
+
+.host:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    transition: 0.2s ease opacity;
+    will-change: opacity;
+    background: #000;
+    opacity: 0;
+}
+
+
+.host:not(:disabled):hover:after {
+    opacity: 0.1;
+}
+
+.host:not(:disabled):active:after {
+    opacity: 0.2;
+}

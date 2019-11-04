@@ -1,10 +1,14 @@
 import thunkMiddleware from 'redux-thunk';
+import { reducer as formReducer } from 'redux-form';
 import {applyMiddleware, combineReducers, createStore, Middleware, Reducer} from 'redux';
 import {ReducerRegistry} from './ReducerRegistry';
 import {isDevelopment} from '../../utils';
 
 const configureReducers = (reducers: Dict<Reducer>) => {
-    return combineReducers({...reducers});
+    return combineReducers({
+        ...reducers,
+        form: formReducer
+    });
 };
 
 const middlewares: Middleware[] = [

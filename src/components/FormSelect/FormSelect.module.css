@@ -1,0 +1,5 @@
+.invalid > [class$="-control"],
+.invalid > [class$="-control"]:hover {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 0 1px #ff6b6b;
+}

@@ -1,19 +1,21 @@
 import * as React from 'react';
-import {useEffect} from 'react';
-import {connect} from 'react-redux';
-import selectors from './store/currency-exchange.selectors';
-import actions from './store/currency-rate.actions';
+import styles from './CurrencyExchange.module.css'
+import CurrencyExchangeForm from './CurrencyExchangeForm';
 
-type ICurrencyExchangeProps = typeof actions & ReturnType<typeof selectors>;
+const submitForm = (props: any) => {
+    console.log(props);
+};
 
-const CurrencyExchange = (props: ICurrencyExchangeProps) => {
-    useEffect(() => {
-        props.loadCurrenciesRates();
-    });
-
+const CurrencyExchange: React.FC = () => {
     return (
-        <div>CurrendcyExdgde</div>
+        <div className={styles.host}>
+            <h1>Transfer money</h1>
+            <h4>Transfer money between wallets</h4>
+            <div className={styles.card}>
+                <CurrencyExchangeForm onSubmit={submitForm}/>
+            </div>
+        </div>
     );
 };
 
-export default connect(selectors, actions)(CurrencyExchange);
+export default CurrencyExchange;
