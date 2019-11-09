@@ -19,7 +19,7 @@ interface IFormSelectProps {
 export const FormSelect: React.FC<WrappedFieldProps & IFormSelectProps> = (props) => {
     const {error, touched, invalid} = props.meta;
     const onSelect = (option: ValueType<IFormSelectOption>) => {
-        props.input.onChange((option as IFormSelectOption).value);
+        props.input.onChange((option as IFormSelectOption));
     };
 
     const className = classNames(
@@ -36,7 +36,7 @@ export const FormSelect: React.FC<WrappedFieldProps & IFormSelectProps> = (props
                 options={props.options}
                 onChange={onSelect}
                 onFocus={props.input.onFocus}
-                onBlur={props.input.onBlur}
+                value={props.input.value}
             />
             <ValidationMessage>{touched ? error : ''}</ValidationMessage>
         </>

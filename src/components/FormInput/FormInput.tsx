@@ -6,12 +6,13 @@ import {ValidationMessage} from '../ValidationMessage';
 
 interface IFormInputProps {
     className?: string;
-    placeholder: string;
+    placeholder?: string;
+    disabled?: boolean;
+    hidden?: boolean;
 }
 
 export const FormInput: React.FC<WrappedFieldProps & IFormInputProps> = (props) => {
-    const {error, touched, invalid} = props.meta;
-
+    const {error, touched, invalid, dirty} = props.meta;
     const className = classNames(
         invalid && touched && styles.invalid,
         props.className,
@@ -19,13 +20,15 @@ export const FormInput: React.FC<WrappedFieldProps & IFormInputProps> = (props) 
     );
 
     return (
-        <>
+        <div>
             <input
                 placeholder={props.placeholder || ''}
                 className={className}
+                disabled={props.disabled}
+                hidden={props.hidden}
                 {...props.input}
             />
-            <ValidationMessage>{touched ? error : ''}</ValidationMessage>
-        </>
+            <ValidationMessage>{touched || dirty ? error : ''}</ValidationMessage>
+        </div>
     );
 };

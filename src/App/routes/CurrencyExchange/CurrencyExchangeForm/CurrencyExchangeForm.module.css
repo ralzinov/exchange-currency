@@ -1,9 +1,23 @@
-.row {
+.host fieldset {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fafafa;
+    padding: 4px 16px;
+}
+
+.row,
+.amountRow {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.amountRow {
+    align-items: flex-start;
 }
 
 .row:not(:last-child) {
-    margin-bottom: 12px;
+    margin-bottom: 24px;
 }
 
 .cell {
@@ -12,15 +26,15 @@
     flex: 1;
 }
 
-.cell > * {
+.cell > *:not(:last-child) {
     margin-bottom: 8px;
 }
 
 .directionSymbol {
     display: flex;
     width: 24px;
-    margin: 8px;
     align-items: center;
+    margin: auto 8px;
 }
 
 .directionSymbol:after {
@@ -37,4 +51,21 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 8px;
+}
+
+.submitButton {
+    margin-left: auto;
+    min-width: 250px;
+}
+
+.targetAmountValue {
+    margin-top: auto;
+    font-size: 32px;
+    display: flex;
+    line-height: 1;
+    color: green;
+}
+
+.targetAmountValue:before {
+    content: '+';
 }

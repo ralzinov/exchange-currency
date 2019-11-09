@@ -24,7 +24,11 @@
     ]
   },
   "dependencies": {
+    "accounting": "0.4.1",
+    "cashify": "2.0.2",
     "classnames": "2.2.6",
+    "lodash": "4.17.15",
+    "money-math": "2.5.1",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-redux": "7.1.1",
@@ -35,11 +39,15 @@
     "redux-form-validators": "3.3.2",
     "redux-observable": "1.2.0",
     "redux-thunk": "2.3.0",
-    "reselect": "4.0.0"
+    "reselect": "4.0.0",
+    "ts-money": "0.4.6"
   },
   "devDependencies": {
+    "@types/accounting": "0.4.1",
     "@types/classnames": "2.2.9",
     "@types/jest": "24.0.21",
+    "@types/lodash": "4.14.144",
+    "@types/money-math": "2.5.0",
     "@types/node": "12.12.5",
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.3",
@@ -51,6 +59,6 @@
     "@types/webpack-env": "1.14.1",
     "react-scripts": "3.2.0",
     "redux-logger": "3.0.6",
-    "typescript": "3.6.4"
+    "typescript": "3.7.2"
   }
 }

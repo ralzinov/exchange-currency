@@ -9,6 +9,7 @@ export const LOAD_CURRENCY_RATES_ERROR = '[Currency] Failed to load currency rat
 export const LOAD_WALLETS = '[Currency] Load user wallets';
 export const LOAD_WALLETS_ERROR = '[Currency] Failed to load user wallets';
 export const LOAD_WALLETS_SUCCESS = '[Currency] User wallets loaded';
+export const AMOUNT_FIELD_CHANGE = '[Currency form] Amount field change';
 
 const loadCurrencyRatesSuccess: IActionCreator<any> = () => ({
     type: LOAD_CURRENCY_RATES_SUCCESS
@@ -40,7 +41,13 @@ export const loadWallets: ISideEffectActionCreator = () => ({
     type: LOAD_WALLETS
 });
 
+export const amountFieldChange: IActionCreator<string> = (payload) => ({
+    type: AMOUNT_FIELD_CHANGE,
+    payload
+});
+
 
 export type ICurrencyRatesActions =
+    ReturnType<typeof amountFieldChange> |
     ReturnType<typeof loadCurrencyRates> |
     ReturnType<typeof loadWallets>;

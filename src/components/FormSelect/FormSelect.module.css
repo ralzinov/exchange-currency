@@ -1,3 +1,7 @@
+.host > [class$="-control"] {
+    height: 48px;
+}
+
 .invalid > [class$="-control"],
 .invalid > [class$="-control"]:hover {
     border-color: #ff6b6b;
