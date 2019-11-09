@@ -4,17 +4,18 @@ import {ActionsObservable, ofType} from 'redux-observable';
 import {LOAD_WALLETS, loadWallets} from './CurrencyExchange.actions';
 import {IWallet} from './interfaces';
 
+const randomBalance = (decimals: number) => parseFloat((Math.random() * decimals * 10).toFixed(2));
 const MOCK_WALLETS: IWallet[] = [{
-    balance: 403.3,
+    balance: randomBalance(4000),
     currency: 'USD',
 }, {
-    balance: 100001.39,
+    balance: randomBalance(10000),
     currency: 'RUB'
 }, {
-    balance: 122.45,
+    balance: randomBalance(6000),
     currency: 'EUR'
 }, {
-    balance: 88.1,
+    balance: randomBalance(3000),
     currency: 'GBP'
 }];
 
