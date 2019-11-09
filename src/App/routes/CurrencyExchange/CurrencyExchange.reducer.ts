@@ -1,12 +1,15 @@
 import {createSelector} from 'reselect';
 import {formValueSelector} from 'redux-form';
-import {ICurrencyExchangeReducerState, IWallet} from './interfaces';
+import {IAPIErrorResponse, ICurrencyExchangeReducerState, ICurrencyPairExchangeRate, IWallet} from './interfaces';
 import {
-    AMOUNT_FIELD_CHANGE,
+    EXCHANGE_RATE_UPDATE_ERROR,
+    EXCHANGE_RATE_UPDATE_SUCCESS,
     ICurrencyRatesActions,
     LOAD_WALLETS,
     LOAD_WALLETS_ERROR,
-    LOAD_WALLETS_SUCCESS
+    LOAD_WALLETS_SUCCESS,
+    RUN_EXCHANGE_RATE_POLLING,
+    STOP_EXCHANGE_RATE_POLLING
 } from './CurrencyExchange.actions';
 import {IFormSelectOption} from '../../../components/FormSelect';
 import {memoize} from '../../../utils';
@@ -14,46 +17,65 @@ import {memoize} from '../../../utils';
 export const EXCHANGE_FORM_NAME = 'exchange';
 
 const initialState: ICurrencyExchangeReducerState = {
-    isPending: false,
-    exchangeRate: {
-        timestamp: 112358,
-        base: 'USD',
-        rates: {
-            USD: 0.0156613,
-            RUB: 63.8517
-        }
-    },
+    isWalletsLoadPending: false,
+    isExchangeRatePollingEnabled: false,
     wallets: []
 };
 
-export function currencyExchangeReducer(state: ICurrencyExchangeReducerState = initialState, action: ICurrencyRatesActions) {
+export function currencyExchangeReducer(
+    state: ICurrencyExchangeReducerState = initialState,
+    action: ICurrencyRatesActions
+): ICurrencyExchangeReducerState {
     switch (action.type) {
         case LOAD_WALLETS: {
             return {
                 ...state,
-                isPending: true,
+                isWalletsLoadPending: true,
             };
         }
 
         case LOAD_WALLETS_SUCCESS: {
             return {
                 ...state,
-                isPending: false,
-                wallets: action.payload
+                isWalletsLoadPending: false,
+                wallets: action.payload as IWallet[]
             };
         }
 
         case LOAD_WALLETS_ERROR: {
             return {
                 ...state,
-                isPending: false
+                walletsLoadError: action.payload as IAPIErrorResponse,
+                isWalletsLoadPending: false,
             };
         }
 
-        case AMOUNT_FIELD_CHANGE: {
+        case EXCHANGE_RATE_UPDATE_SUCCESS: {
             return {
                 ...state,
-                lastChangedAmountField: action.payload
+                exchangeRate: action.payload as ICurrencyPairExchangeRate
+            };
+        }
+
+        case EXCHANGE_RATE_UPDATE_ERROR: {
+            return {
+                ...state,
+                exchangeRateError: action.payload as IAPIErrorResponse,
+                isExchangeRatePollingEnabled: false
+            };
+        }
+
+        case RUN_EXCHANGE_RATE_POLLING: {
+            return {
+                ...state,
+                isExchangeRatePollingEnabled: true
+            };
+        }
+
+        case STOP_EXCHANGE_RATE_POLLING: {
+            return {
+                ...state,
+                isExchangeRatePollingEnabled: false
             };
         }
 
@@ -61,11 +83,18 @@ export function currencyExchangeReducer(state: ICurrencyExchangeReducerState = i
     }
 }
 
-const EXCHANGE_STATE_SELECTOR = (state: {exchange: ICurrencyExchangeReducerState}) => state.exchange;
+const EXCHANGE_STATE_SELECTOR = (state: { exchange: ICurrencyExchangeReducerState }) => state.exchange;
+
+export const EXCHANGE_POLLING_ENABLED_SELECTOR = createSelector(
+    EXCHANGE_STATE_SELECTOR,
+    (exchange) => {
+        return exchange && exchange.isExchangeRatePollingEnabled;
+    }
+);
 
 export const WALLETS_EXCHANGE_RATES_SELECTOR = createSelector(
     EXCHANGE_STATE_SELECTOR,
-    (exchange) => exchange && exchange.exchangeRate.rates
+    (exchange) => exchange && exchange.exchangeRate && exchange.exchangeRate.rates
 );
 
 export const FORM_VALUE_SELECTOR_FACTORY = (field: string) => (state: object) => {

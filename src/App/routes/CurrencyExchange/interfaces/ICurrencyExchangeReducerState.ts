@@ -1,11 +1,17 @@
 import {IWallet} from './IWallet';
+import {IAPIErrorResponse} from './IAPIErrorResponse';
+
+export interface ICurrencyPairExchangeRate {
+    timestamp: number;
+    rates: Dict<number>;
+    base: string;
+}
 
 export interface ICurrencyExchangeReducerState {
-    isPending: boolean;
+    isWalletsLoadPending: boolean;
+    isExchangeRatePollingEnabled: boolean;
     wallets: IWallet[];
-    exchangeRate: {
-        base: string,
-        timestamp: number,
-        rates: Dict<number>
-    }
+    walletsLoadError?: IAPIErrorResponse;
+    exchangeRate?: ICurrencyPairExchangeRate;
+    exchangeRateError?: IAPIErrorResponse;
 }

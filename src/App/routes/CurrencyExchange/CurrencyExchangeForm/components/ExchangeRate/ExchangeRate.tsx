@@ -3,9 +3,11 @@ import {IWallet} from '../../../interfaces';
 import {formatWalletValue} from '../../helpers';
 import styles from './ExchangeRate.module.css';
 
-export const ExchangeRate: React.FC<{source: IWallet; target: IWallet; rates: Dict<number>}> = (props) => {
+const TARGET_CURRENCY_PRECISION = 4;
+
+export const ExchangeRate: React.FC<{source: IWallet; target: IWallet; rates?: Dict<number>}> = (props) => {
     const {source, target, rates} = props;
-    if (!source || !target) {
+    if (!source || !target || !rates) {
         return null;
     }
 
@@ -17,7 +19,7 @@ export const ExchangeRate: React.FC<{source: IWallet; target: IWallet; rates: Di
     const targetFormatted = formatWalletValue({
         currency: target.currency,
         balance: rates[target.currency]
-    });
+    }, TARGET_CURRENCY_PRECISION);
 
     return (
         <div className={styles.host}>

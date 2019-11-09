@@ -1,37 +1,20 @@
 import * as React from 'react';
-import {ChangeEvent, useEffect} from 'react';
-import {EventWithDataHandler, Field, InjectedFormProps} from 'redux-form';
+import {useEffect} from 'react';
+import {Field, InjectedFormProps} from 'redux-form';
 import {REQUIRED_VALIDATOR, SOURCE_AMOUNT_VALIDATORS} from './CurrencyExchangeForm.validators';
-import {clearOppositeWalletWhenEqual} from './effects/clearOppositeWalletWhenEqual';
-import {amountParserFactory, convertCurrencies} from './helpers';
+import {clearOppositeWalletWhenEqual, runExchangeRatePolling, setTargetWalletAmount} from './effects';
 import {FormSelect} from '../../../../components/FormSelect';
 import {FormInput} from '../../../../components/FormInput';
 import {ICurrencyExchangeFormProps} from './interfaces';
 import {Button} from '../../../../components/Button';
 import {ExchangeRate} from './components/ExchangeRate';
+import {amountParserFactory} from './helpers';
 import {Balance} from './components/Balance';
 import styles from './CurrencyExchangeForm.module.css';
 
-type IProps = InjectedFormProps & ICurrencyExchangeFormProps;
-
-const setTargetWalletAmount = (props: IProps): EventWithDataHandler<ChangeEvent<any>> =>
-    (event, value, previousValue, name) => {
-        const {sourceValue, targetValue} = props;
-        if (name !== 'sourceAmount' || isNaN(parseFloat(value)) || !sourceValue || !targetValue) {
-            props.change('targetAmount', null);
-            return;
-        }
-        const targetAmountValue = convertCurrencies(value, {
-            base: props.sourceValue.currency,
-            from: props.sourceValue.currency,
-            to: props.targetValue.currency,
-            rates: props.exchangeRates
-        });
-        props.change('targetAmount', targetAmountValue);
-    };
-
-const CurrencyExchangeForm: React.FC<IProps> = (props) => {
+const CurrencyExchangeForm: React.FC<InjectedFormProps & ICurrencyExchangeFormProps> = (props) => {
     const {handleSubmit, submitting, sourceValue, targetValue, exchangeRates, targetAmount, valid} = props;
+    useEffect(() => runExchangeRatePolling(props), [sourceValue, targetValue]);
     useEffect(() => clearOppositeWalletWhenEqual(props));
 
     return (

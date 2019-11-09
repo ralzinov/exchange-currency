@@ -6,7 +6,7 @@ export interface IActionWithPayload<TPayload = unknown> extends Action {
 
 export type IActionCreator<TPayload = never> = (payload?: TPayload) => IActionWithPayload<TPayload>;
 
-export type ISideEffectActionCreator<TPayload = never> = (payload?: TPayload) => IActionWithPayload<TPayload> & {
-    onSuccess: IActionCreator<any>;
-    onError: IActionCreator<any>;
+export type ISideEffectActionCreator<TPayload = never, S = any, E = any> = (payload?: TPayload) => IActionWithPayload<TPayload> & {
+    onSuccess: IActionCreator<S>;
+    onError: IActionCreator<E>;
 };

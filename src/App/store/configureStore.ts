@@ -27,9 +27,7 @@ export function configureStore() {
     // Reconfigure the store's reducer when the reducer registry is changed - we
     // depend on this for loading reducers via code splitting and for hot
     // reloading reducer modules.
-    StoreRegistry.onChange((reducers) => {
-        store.replaceReducer(configureReducers(reducers))
-    });
+    StoreRegistry.onChange((reducers) => store.replaceReducer(configureReducers(reducers)));
     epicMiddleware.run(StoreRegistry.rootEpic);
     return store;
 }
