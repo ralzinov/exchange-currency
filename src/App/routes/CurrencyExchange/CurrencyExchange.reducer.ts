@@ -1,20 +1,19 @@
 import {createSelector} from 'reselect';
 import {formValueSelector} from 'redux-form';
-import {ICurrencyExchangeState} from './interfaces/ICurrencyExchangeState';
+import {ICurrencyExchangeReducerState, IWallet} from './interfaces';
 import {
+    AMOUNT_FIELD_CHANGE,
     ICurrencyRatesActions,
     LOAD_WALLETS,
-    LOAD_WALLETS_SUCCESS,
     LOAD_WALLETS_ERROR,
-    AMOUNT_FIELD_CHANGE
+    LOAD_WALLETS_SUCCESS
 } from './CurrencyExchange.actions';
 import {IFormSelectOption} from '../../../components/FormSelect';
-import {IWallet} from './interfaces';
 import {memoize} from '../../../utils';
 
 export const EXCHANGE_FORM_NAME = 'exchange';
 
-const initialState: ICurrencyExchangeState = {
+const initialState: ICurrencyExchangeReducerState = {
     isPending: false,
     exchangeRate: {
         timestamp: 112358,
@@ -39,7 +38,7 @@ const initialState: ICurrencyExchangeState = {
     }]
 };
 
-export function currencyExchangeReducer(state: ICurrencyExchangeState = initialState, action: ICurrencyRatesActions) {
+export function currencyExchangeReducer(state: ICurrencyExchangeReducerState = initialState, action: ICurrencyRatesActions) {
     switch (action.type) {
         case LOAD_WALLETS: {
             return {
@@ -74,7 +73,7 @@ export function currencyExchangeReducer(state: ICurrencyExchangeState = initialS
     }
 }
 
-const EXCHANGE_STATE_SELECTOR = (state: {exchange: ICurrencyExchangeState}) => state.exchange;
+const EXCHANGE_STATE_SELECTOR = (state: {exchange: ICurrencyExchangeReducerState}) => state.exchange;
 
 export const WALLETS_EXCHANGE_RATES_SELECTOR = createSelector(
     EXCHANGE_STATE_SELECTOR,

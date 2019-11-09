@@ -7,11 +7,10 @@ import {
     WALLETS_OPTIONS_SELECTOR_FACTORY
 } from '../CurrencyExchange.reducer';
 import CurrencyExchangeForm from './CurrencyExchangeForm';
-import {ICurrencyExchangeState} from '../interfaces/ICurrencyExchangeState';
-import {amountFieldChange} from '../CurrencyExchange.actions';
+import {ICurrencyExchangeReducerState} from '../interfaces';
 import {ICurrencyExchangeFormProps} from './interfaces';
 
-const Component = connect((state: { exchange: ICurrencyExchangeState }): ICurrencyExchangeFormProps => {
+const Component = connect((state: { exchange: ICurrencyExchangeReducerState }): ICurrencyExchangeFormProps => {
     const sourceWallet = FORM_VALUE_SELECTOR_FACTORY('source')(state);
     const targetWallet = FORM_VALUE_SELECTOR_FACTORY('target')(state);
     return {
@@ -22,8 +21,6 @@ const Component = connect((state: { exchange: ICurrencyExchangeState }): ICurren
         sourceValue: sourceWallet && sourceWallet.value,
         targetValue: targetWallet && targetWallet.value
     }
-}, {
-    amountFieldChange
 })(CurrencyExchangeForm);
 
 export default reduxForm({

@@ -1,6 +1,6 @@
 import {IWallet} from './IWallet';
 
-export interface ICurrencyExchangeState {
+export interface ICurrencyExchangeReducerState {
     isPending: boolean;
     wallets: IWallet[];
     exchangeRate: {
