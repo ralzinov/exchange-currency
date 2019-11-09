@@ -16,11 +16,11 @@ export const FormInput: React.FC<WrappedFieldProps & IFormInputProps> = (props) 
     const className = classNames(
         invalid && touched && styles.invalid,
         props.className,
-        styles.host
+        styles.input
     );
 
     return (
-        <div>
+        <div className={styles.host}>
             <input
                 placeholder={props.placeholder || ''}
                 className={className}
@@ -28,7 +28,9 @@ export const FormInput: React.FC<WrappedFieldProps & IFormInputProps> = (props) 
                 hidden={props.hidden}
                 {...props.input}
             />
-            <ValidationMessage>{touched || dirty ? error : ''}</ValidationMessage>
+            <ValidationMessage className={styles.validationMessage}>
+                {touched || dirty ? error : ''}
+            </ValidationMessage>
         </div>
     );
 };

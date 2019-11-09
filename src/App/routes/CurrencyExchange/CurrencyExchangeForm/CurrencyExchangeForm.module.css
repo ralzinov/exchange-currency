@@ -59,11 +59,14 @@
 }
 
 .targetAmountValue {
-    margin-top: auto;
     font-size: 32px;
     display: flex;
     line-height: 1;
     color: green;
+    height: 64px;
+    margin-bottom: 8px;
+    padding-top: 12px;
+    box-sizing: border-box;
 }
 
 .targetAmountValue:before {

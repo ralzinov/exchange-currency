@@ -7,6 +7,7 @@ export const formatWalletValue = memoize((wallet: IWallet) => {
     if (wallet) {
         const currency = (Currencies as Dict<{ symbol: string }>)[wallet.currency];
         const symbol = currency ? currency.symbol : wallet.currency;
-        return accounting.formatMoney(wallet.balance, symbol, 2);
+        const isSafeValue = Number.isSafeInteger(parseInt(`${wallet.balance}`, 10));
+        return isSafeValue ? accounting.formatMoney(wallet.balance, symbol, 2) : wallet.balance;
     }
 });

@@ -17,6 +17,10 @@ const AMOUNT_VALIDATORS = [
 
 export const SOURCE_AMOUNT_VALIDATORS: Validator[] = [
     ...AMOUNT_VALIDATORS,
+    (value) => {
+        const parsedValue = parseInt(value, 10);
+        return !isNaN(parsedValue) && Number.isSafeInteger(parsedValue) ? null : 'Value is too big'
+    },
     (value, allValues) => {
         const wallet = allValues.source && allValues.source.value;
         if (!wallet) {

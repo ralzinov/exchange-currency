@@ -25,10 +25,10 @@ const initialState: ICurrencyExchangeState = {
         }
     },
     wallets: [{
-        balance: 43.3,
+        balance: 403.3,
         currency: 'USD',
     }, {
-        balance: 99999999999999999999999999999999999999999999999999999999999.39,
+        balance: 100001.39,
         currency: 'RUB'
     }, {
         balance: 122.45,

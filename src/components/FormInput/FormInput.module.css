@@ -1,4 +1,11 @@
 .host {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.input {
     padding: 12px;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -7,14 +14,18 @@
     margin: 0;
 }
 
-.host:focus {
+.input:focus {
     border-color: #2684FF;
     border-width: 2px;
     margin: -1px;
 }
 
-.host.invalid {
+.input.invalid {
     border-color: #ff6b6b;
     border-width: 2px;
     margin: -1px;
+}
+
+.validationMessage {
+    margin-right: auto;
 }
