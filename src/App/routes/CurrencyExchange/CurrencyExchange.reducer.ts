@@ -23,19 +23,7 @@ const initialState: ICurrencyExchangeReducerState = {
             RUB: 63.8517
         }
     },
-    wallets: [{
-        balance: 403.3,
-        currency: 'USD',
-    }, {
-        balance: 100001.39,
-        currency: 'RUB'
-    }, {
-        balance: 122.45,
-        currency: 'EUR'
-    }, {
-        balance: 88.1,
-        currency: 'GBP'
-    }]
+    wallets: []
 };
 
 export function currencyExchangeReducer(state: ICurrencyExchangeReducerState = initialState, action: ICurrencyRatesActions) {
@@ -77,7 +65,7 @@ const EXCHANGE_STATE_SELECTOR = (state: {exchange: ICurrencyExchangeReducerState
 
 export const WALLETS_EXCHANGE_RATES_SELECTOR = createSelector(
     EXCHANGE_STATE_SELECTOR,
-    ({exchangeRate}) => exchangeRate.rates
+    (exchange) => exchange && exchange.exchangeRate.rates
 );
 
 export const FORM_VALUE_SELECTOR_FACTORY = (field: string) => (state: object) => {
@@ -93,7 +81,7 @@ const mapWalletToOption = memoize((wallet: IWallet): IFormSelectOption => {
 
 const WALLETS_SELECTOR = createSelector(
     EXCHANGE_STATE_SELECTOR,
-    ({wallets}) => wallets
+    (exchange) => exchange && exchange.wallets
 );
 
 export const WALLETS_OPTIONS_SELECTOR_FACTORY = (fieldName: string) => createSelector(

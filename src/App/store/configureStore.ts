@@ -13,17 +13,16 @@ const configureReducers = (reducers: Dict<Reducer>) => {
 
 const epicMiddleware = createEpicMiddleware();
 const middlewares: Middleware[] = [
+    epicMiddleware,
     !isDevelopment() ? null : require('redux-logger').createLogger({
         collapsed: true,
         duration: true
     }),
-    epicMiddleware
 ].filter(Boolean);
 
 export function configureStore() {
     const rootReducer = configureReducers(StoreRegistry.getReducers());
     const store = applyMiddleware(...middlewares)(createStore)(rootReducer);
-    epicMiddleware.run(StoreRegistry.rootEpic);
 
     // Reconfigure the store's reducer when the reducer registry is changed - we
     // depend on this for loading reducers via code splitting and for hot
@@ -31,6 +30,6 @@ export function configureStore() {
     StoreRegistry.onChange((reducers) => {
         store.replaceReducer(configureReducers(reducers))
     });
-
+    epicMiddleware.run(StoreRegistry.rootEpic);
     return store;
 }

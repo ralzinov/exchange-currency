@@ -27,12 +27,14 @@ export const loadCurrencyRates: ISideEffectActionCreator<{base: string; target: 
 });
 
 
-const loadWalletsSuccess: IActionCreator<IWallet[]> = () => ({
-    type: LOAD_WALLETS
+const loadWalletsSuccess: IActionCreator<IWallet[]> = (payload) => ({
+    type: LOAD_WALLETS_SUCCESS,
+    payload
 });
 
-const loadWalletsError: IActionCreator<{}> = () => ({
-    type: LOAD_WALLETS
+const loadWalletsError: IActionCreator<{}> = (payload) => ({
+    type: LOAD_WALLETS_ERROR,
+    payload
 });
 
 export const loadWallets: ISideEffectActionCreator = () => ({
