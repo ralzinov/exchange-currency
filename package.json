@@ -38,8 +38,8 @@
     "redux-form": "8.2.6",
     "redux-form-validators": "3.3.2",
     "redux-observable": "1.2.0",
-    "redux-thunk": "2.3.0",
     "reselect": "4.0.0",
+    "rxjs": "6.5.3",
     "ts-money": "0.4.6"
   },
   "devDependencies": {

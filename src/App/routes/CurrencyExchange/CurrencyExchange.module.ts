@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
-import {ReducerRegistry} from '../../store/ReducerRegistry';
+import {StoreRegistry} from '../../store/StoreRegistry';
 import {currencyExchangeReducer} from './CurrencyExchange.reducer';
 import {loadWallets} from './CurrencyExchange.actions';
 import {ICurrencyExchangeProps} from './interfaces';
 import CurrencyExchange from './CurrencyExchange';
 
-ReducerRegistry.register({
+StoreRegistry.registerReducer({
     exchange: currencyExchangeReducer
 });
 

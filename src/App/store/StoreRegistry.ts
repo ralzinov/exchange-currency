@@ -1,13 +1,27 @@
 import {Reducer} from 'redux';
+import {Subject} from 'rxjs';
+import {mergeMap} from 'rxjs/operators';
+import {Epic} from 'redux-observable';
 
 /**
- * Reducer registry singletone
+ * Store registry singleton
  */
-export class ReducerRegistry {
+export class StoreRegistry {
     private static reducers: Dict<Reducer> = {};
     private static changeListener: null|((reducers: Dict<Reducer>) => void) = null;
+    private static epicSubj$ = new Subject<Function>();
 
-    static register(newReducers: Dict<Reducer>): void {
+    static rootEpic: Epic = (action$, state$) => {
+        return StoreRegistry.epicSubj$.pipe(
+            mergeMap((epic) => epic(action$, state$))
+        )
+    };
+
+    static registerEpic(epic: Function): void {
+        this.epicSubj$.next(epic);
+    }
+
+    static registerReducer(newReducers: Dict<Reducer>): void {
         this.reducers = {
             ...this.reducers,
             ...newReducers
@@ -24,8 +38,9 @@ export class ReducerRegistry {
 
     static onChange(listener: (reducers: Dict<Reducer>) => void): void {
         if (this.changeListener != null) {
-            throw new Error('Can only set the listener for a ReducerRegistry once.')
+            throw new Error('Can only set the listener for a StoreRegistry once.')
         }
         this.changeListener = listener;
     }
 }
+

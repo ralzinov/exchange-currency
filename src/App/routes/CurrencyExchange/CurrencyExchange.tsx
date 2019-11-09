@@ -9,6 +9,7 @@ const submitForm = (props: any) => {
 };
 
 const CurrencyExchange: React.FC<ICurrencyExchangeProps> = (props) => {
+    // eslint-disable-next-line
     useEffect(() => void props.loadWallets(), []);
 
     return (
