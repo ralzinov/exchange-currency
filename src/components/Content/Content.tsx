@@ -6,10 +6,8 @@ interface IContentProps {
     children: ReactNode;
 }
 
-const Content = (props: IContentProps) => {
+export const Content = (props: IContentProps) => {
     return (
         <div className={styles.host}>{props.children}</div>
     );
 };
-
-export default Content;

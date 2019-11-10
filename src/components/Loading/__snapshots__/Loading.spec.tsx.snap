@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with children 1`] = `
+<div
+  className="host"
+>
+  <div
+    className="spinner"
+  >
+    <div />
+    <div>
+      <div />
+    </div>
+  </div>
+</div>
+`;

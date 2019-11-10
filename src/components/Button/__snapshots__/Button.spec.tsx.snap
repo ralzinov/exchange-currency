@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with props and children 1`] = `
+<button
+  className="host test-class-name"
+  onClick={[MockFunction]}
+>
+  Label
+</button>
+`;

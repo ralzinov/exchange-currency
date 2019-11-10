@@ -10,14 +10,14 @@ export interface IFormSelectOption<T = unknown> {
     value: T;
 }
 
-interface IFormSelectProps {
+export interface IFormSelectProps extends WrappedFieldProps {
     options: IFormSelectOption[];
     className?: string;
     placeholder?: string;
 }
 
-export const FormSelect: React.FC<WrappedFieldProps & IFormSelectProps> = (props) => {
-    const {error, touched, invalid} = props.meta;
+export const FormSelect: React.FC<IFormSelectProps> = (props) => {
+    const {error, touched, dirty, invalid} = props.meta;
     const onSelect = (option: ValueType<IFormSelectOption>) => {
         props.input.onChange((option as IFormSelectOption));
     };
@@ -38,7 +38,7 @@ export const FormSelect: React.FC<WrappedFieldProps & IFormSelectProps> = (props
                 onFocus={props.input.onFocus}
                 value={props.input.value}
             />
-            <ValidationMessage>{touched ? error : ''}</ValidationMessage>
+            <ValidationMessage>{touched || dirty ? error : ''}</ValidationMessage>
         </>
     );
 };

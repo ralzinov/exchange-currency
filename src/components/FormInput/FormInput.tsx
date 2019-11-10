@@ -4,7 +4,7 @@ import styles from './FormInput.module.css';
 import {WrappedFieldProps} from 'redux-form';
 import {ValidationMessage} from '../ValidationMessage';
 
-interface IFormInputProps {
+export interface IFormInputProps {
     className?: string;
     placeholder?: string;
     disabled?: boolean;

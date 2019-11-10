@@ -7,8 +7,8 @@ import {Epic} from 'redux-observable';
  * Store registry singleton
  */
 export class StoreRegistry {
-    private static reducers: Dict<Reducer> = {};
-    private static changeListener: null|((reducers: Dict<Reducer>) => void) = null;
+    static reducers: Dict<Reducer> = {};
+    static changeListener: null|((reducers: Dict<Reducer>) => void) = null;
     private static epicSubj$ = new Subject<Function>();
 
     static rootEpic: Epic = (action$, state$) => {

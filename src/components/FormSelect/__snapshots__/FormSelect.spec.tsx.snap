@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should not render error state if untouched and pristine 1`] = `
+Array [
+  <select
+    data-testid="select"
+    onChange={[Function]}
+  />,
+  <div
+    className="host"
+  >
+    
+  </div>,
+]
+`;
+
+exports[`should render with props in invalid state 1`] = `
+Array [
+  <select
+    data-testid="select"
+    onChange={[Function]}
+  />,
+  <div
+    className="host"
+  >
+    Error message
+  </div>,
+]
+`;

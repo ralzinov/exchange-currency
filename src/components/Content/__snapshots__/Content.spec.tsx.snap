@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with props and children 1`] = `
+<div
+  className="host"
+>
+  Some content
+</div>
+`;
