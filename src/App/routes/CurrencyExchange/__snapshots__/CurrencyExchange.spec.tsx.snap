@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with props 1`] = `
+<div
+  className="host"
+>
+  <h1>
+    Transfer money
+  </h1>
+  <h4>
+    Transfer money between wallets
+  </h4>
+  <div
+    className="card"
+  >
+    <form />
+  </div>
+</div>
+`;
