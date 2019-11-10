@@ -17,7 +17,7 @@ import {select} from '../../store';
 
 const EXCHANGE_SERVER_URI = 'https://api.exchangerate-api.com/v4/latest/'; // TODO move to .env
 
-const CURRENCY_EXCHANGE_POLLING_INTERVAL_MS = 1000;
+const CURRENCY_EXCHANGE_POLLING_INTERVAL_MS = 10000;
 
 const randomBalance = (decimals: number) => parseFloat((Math.random() * decimals * 10).toFixed(2));
 const MOCK_WALLETS: IWallet[] = [{
