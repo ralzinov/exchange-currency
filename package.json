@@ -43,6 +43,7 @@
     "ts-money": "0.4.6"
   },
   "devDependencies": {
+    "@types/react-test-renderer": "16.9.1",
     "@types/accounting": "0.4.1",
     "@types/classnames": "2.2.9",
     "@types/jest": "24.0.21",
@@ -57,6 +58,8 @@
     "@types/redux": "3.6.0",
     "@types/redux-form": "8.1.9",
     "@types/webpack-env": "1.14.1",
+    "react-test-renderer": "16.11.0",
+    "jest-marbles": "2.5.0",
     "react-scripts": "3.2.0",
     "redux-logger": "3.0.6",
     "typescript": "3.7.2"
