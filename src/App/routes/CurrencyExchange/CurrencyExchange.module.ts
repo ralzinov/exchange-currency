@@ -3,8 +3,10 @@ import {StoreRegistry} from '../../store/StoreRegistry';
 import {currencyExchangeReducer} from './CurrencyExchange.reducer';
 import {
     loadWalletsEffect,
-    exchangeRatePollingEffect,
-    cancelExchangeRatePollingOnErrorEffect,
+    runExchangeRatePollingEpic,
+    stopExchangeRatePollingOnErrorEpic,
+    pauseExchangeRatePollingOnOfflineEpic,
+    resumeExchangeRatePollingOnOnlineEpic,
 } from './CurrencyExchange.effects';
 import {loadWallets} from './CurrencyExchange.actions';
 import {ICurrencyExchangeProps} from './interfaces';
@@ -15,8 +17,10 @@ StoreRegistry.registerReducer({
 });
 
 StoreRegistry.registerEpic(loadWalletsEffect);
-StoreRegistry.registerEpic(exchangeRatePollingEffect);
-StoreRegistry.registerEpic(cancelExchangeRatePollingOnErrorEffect);
+StoreRegistry.registerEpic(runExchangeRatePollingEpic);
+StoreRegistry.registerEpic(resumeExchangeRatePollingOnOnlineEpic);
+StoreRegistry.registerEpic(pauseExchangeRatePollingOnOfflineEpic);
+StoreRegistry.registerEpic(stopExchangeRatePollingOnErrorEpic);
 
 export default connect(null, {
     loadWallets

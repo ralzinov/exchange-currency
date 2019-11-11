@@ -1,5 +1,3 @@
-
-
 ## TODO
 
 ### Implement:
@@ -7,6 +5,7 @@
 - check in firefox
 - tests
 - get rid of the warning in console
+- handle unhandled exception
 
 ### Refactor:
 - split currencyExchangeReducer to wallets and exchange

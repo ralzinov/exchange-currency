@@ -23,6 +23,8 @@ export const loadWallets: ISideEffectActionCreator = () => ({
 
 export const RUN_EXCHANGE_RATE_POLLING = '[Currency] Run exchange rate polling';
 export const STOP_EXCHANGE_RATE_POLLING = '[Currency] Stop exchange rate polling';
+export const PAUSE_EXCHANGE_RATE_POLLING = '[Currency] Pause exchange rate polling';
+export const RESUME_EXCHANGE_RATE_POLLING = '[Currency] Resume exchange rate polling';
 export const EXCHANGE_RATE_UPDATE_SUCCESS = '[Currency] Exchange rate update success';
 export const EXCHANGE_RATE_UPDATE_ERROR = '[Currency] Exchange rate update error';
 
@@ -44,6 +46,14 @@ export const runExchangeRatePolling: ISideEffectActionCreator<never, ICurrencyPa
 
 export const stopExchangeRatePolling: IActionCreator = () => ({
     type: STOP_EXCHANGE_RATE_POLLING
+});
+
+export const pauseExchangeRatePolling: IActionCreator = () => ({
+    type: PAUSE_EXCHANGE_RATE_POLLING
+});
+
+export const resumeExchangeRatePolling: IActionCreator = () => ({
+    type: RESUME_EXCHANGE_RATE_POLLING
 });
 
 
