@@ -12,7 +12,7 @@ import {loadWallets} from './CurrencyExchange.actions';
 import {ICurrencyExchangeProps} from './interfaces';
 import CurrencyExchange from './CurrencyExchange';
 
-StoreRegistry.registerReducer({
+StoreRegistry.registerReducers({
     exchange: currencyExchangeReducer
 });
 

@@ -33,7 +33,7 @@ describe('StoreRegistry', () => {
             const spyOnChange = jest.fn();
             StoreRegistry.onChange(spyOnChange);
 
-            StoreRegistry.registerReducer({
+            StoreRegistry.registerReducers({
                 mock1: mockReducer1
             });
 
@@ -42,7 +42,7 @@ describe('StoreRegistry', () => {
             });
             spyOnChange.mockClear();
 
-            StoreRegistry.registerReducer({
+            StoreRegistry.registerReducers({
                 mock2: mockReducer2
             });
 
@@ -57,10 +57,10 @@ describe('StoreRegistry', () => {
         it('should return all registered reducers', () => {
             const mockReducer1 = () => {};
             const mockReducer2 = () => {};
-            StoreRegistry.registerReducer({
+            StoreRegistry.registerReducers({
                 mock1: mockReducer1
             });
-            StoreRegistry.registerReducer({
+            StoreRegistry.registerReducers({
                 mock2: mockReducer2
             });
 

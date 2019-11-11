@@ -21,7 +21,7 @@ export class StoreRegistry {
         this.epicSubj$.next(epic);
     }
 
-    static registerReducer(newReducers: Dict<Reducer>): void {
+    static registerReducers(newReducers: Dict<Reducer>): void {
         this.reducers = {
             ...this.reducers,
             ...newReducers

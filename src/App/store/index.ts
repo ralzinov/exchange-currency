@@ -18,10 +18,10 @@ export default () => {
     /**
      * Store must have at least one reducer on start
      */
-    StoreRegistry.registerReducer({appReducer});
+    StoreRegistry.registerReducers({appReducer});
     return configureStore();
 };
 
 isDevelopment() && module.hot && module.hot.accept('./reducers/app.reducer', () => {
-    StoreRegistry.registerReducer(require('./reducers/app.reducer'));
+    StoreRegistry.registerReducers(require('./reducers/app.reducer'));
 });
