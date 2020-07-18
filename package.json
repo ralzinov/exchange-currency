@@ -27,7 +27,7 @@
     "accounting": "0.4.1",
     "cashify": "2.0.2",
     "classnames": "2.2.6",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "money-math": "2.5.1",
     "react": "16.11.0",
     "react-dom": "16.11.0",
