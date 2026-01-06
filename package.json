@@ -60,7 +60,7 @@
     "@types/webpack-env": "1.14.1",
     "react-test-renderer": "16.11.0",
     "jest-marbles": "2.5.0",
-    "react-scripts": "3.2.0",
+    "react-scripts": "5.0.1",
     "redux-logger": "3.0.6",
     "typescript": "3.7.2"
   }
